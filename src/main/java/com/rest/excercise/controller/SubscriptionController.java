@@ -34,7 +34,7 @@ public class SubscriptionController {
 		return new ResponseEntity<Response>(response, HttpStatus.OK);
 
 	}
-	
+	 
 	
 	@RequestMapping(value = "/create/", method = RequestMethod.POST)
 	public ResponseEntity<?> createSubscriptionUrl(@RequestParam("url") String url) {

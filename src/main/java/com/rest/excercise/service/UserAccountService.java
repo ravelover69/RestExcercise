@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
-import com.rest.excercise.domain.UserAccount;
 import com.rest.excercise.domain.UserAccountNotification;
 import com.rest.excercise.domain.entities.ErrorResponse;
 import com.rest.excercise.domain.entities.ErrorResponse.ErrorCode;

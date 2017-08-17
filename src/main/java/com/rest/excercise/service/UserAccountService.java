@@ -2,7 +2,6 @@ package com.rest.excercise.service;
 
 import org.springframework.stereotype.Service;
 
-import com.rest.excercise.domain.UserAccount;
 import com.rest.excercise.domain.UserAccountNotification;
 import com.rest.excercise.domain.entities.SuccessResponse;
 

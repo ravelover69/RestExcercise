@@ -3,15 +3,11 @@ package com.rest.excercise.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-
-import com.rest.excercise.domain.SubscriptionNotification;
-import com.rest.excercise.domain.UserAccount;
 import com.rest.excercise.domain.UserAccountNotification;
 import com.rest.excercise.domain.entities.ErrorResponse;
 import com.rest.excercise.domain.entities.Notice;
@@ -77,32 +73,4 @@ public class UserAccountController {
 		return reponseEntity;
 	}
 	
-	
-	/*
-	 * @RequestMapping(value = "/update/", method = RequestMethod.PUT)
-	public ResponseEntity<?> changeUser (@RequestBody UserAccount uAccount) {
-		Response response = uAccountservice.updateUser(uAccount);		
-		System.out.println("In User Change");
-		return new ResponseEntity <Response>(response, HttpStatus.OK);
-	}
-	
-	@RequestMapping(value = "/unassign/", method = RequestMethod.POST)
-	public ResponseEntity<?> unAssignUser (@RequestBody UserAccount uAccount) {
-		Response response = uAccountservice.unAssignUser(uAccount);		
-		System.out.println("In User UnAssignment");
-		return new ResponseEntity <Response>(response, HttpStatus.OK);
-	}
-	
-
-	@RequestMapping(value = "/assign/", method = RequestMethod.POST)
-	public ResponseEntity<?> assignUser (@RequestBody UserAccount uAccount) {
-		Response response = uAccountservice.assignUser(uAccount);		
-		System.out.println("In User Assignment");
-		return new ResponseEntity <Response>(response, HttpStatus.OK);
-	}
-	
-	 */
-	
-	
-
 }

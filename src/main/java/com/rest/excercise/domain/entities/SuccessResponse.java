@@ -3,25 +3,31 @@ package com.rest.excercise.domain.entities;
 
 public class SuccessResponse extends Response {
 	
-	
+	String indentifier;
+
 	public SuccessResponse() {
-		super();
-	}
-
-	String accountIndentifier;
-
-	public SuccessResponse(String accountIndentifier) {
 		super(true);
-		this.accountIndentifier = accountIndentifier;
 	}
+
+	public SuccessResponse(String indentifier) {
+		super(true);
+		this.indentifier = indentifier;
+	}
+	
+	public SuccessResponse(String indentifier, String message) {
+		super(true, message);
+		this.indentifier = indentifier;
+	}
+
 	
 	public String getAccountIndentifier() {
-		return accountIndentifier;
+		return indentifier;
 	}
 
-	public void setAccountIndentifier(String accountIndentifier) {
-		this.accountIndentifier = accountIndentifier;
+	public void setAccountIndentifier(String indentifier) {
+		this.indentifier = indentifier;
 	}
+
 	
 	
 

@@ -2,23 +2,22 @@ package com.rest.excercise.domain.entities;
 
 public class ErrorResponse extends Response {
 	
-	public ErrorResponse(boolean success) {
-		super(success);
+	ErrorCode errorCode;
+	
+	public ErrorResponse(ErrorCode errorCode, String message) {
+		super(false, message);
+		this.errorCode = errorCode;
 	}
 
-	ErrorCode errorCode;
-	String message;
-	String userIdentifier;
-	String accountIdentifier;
-	
-	public ErrorResponse(ErrorCode errorCode, String message, String userIdentifier,
-			String accountIdentifier) {
+	public ErrorResponse(ErrorCode errorCode) {
 		super(false);
 		this.errorCode = errorCode;
-		this.message = message;
-		this.userIdentifier = userIdentifier;
-		this.accountIdentifier = accountIdentifier;
 	}
+	
+	public ErrorResponse() {
+		super(false);
+	}
+
 
 	 public enum ErrorCode {
 	        USER_ALREADY_EXISTS,
@@ -42,29 +41,5 @@ public class ErrorResponse extends Response {
 
 	public void setErrorCode(ErrorCode errorCode) {
 		this.errorCode = errorCode;
-	}
-
-	public String getMessage() {
-		return message;
-	}
-
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	public String getUserIdentifier() {
-		return userIdentifier;
-	}
-
-	public void setUserIdentifier(String userIdentifier) {
-		this.userIdentifier = userIdentifier;
-	}
-
-	public String getAccountIdentifier() {
-		return accountIdentifier;
-	}
-
-	public void setAccountIdentifier(String accountIdentifier) {
-		this.accountIdentifier = accountIdentifier;
 	}
 }

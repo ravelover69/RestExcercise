@@ -29,7 +29,7 @@ public class UserAccountController {
 		ResponseEntity<Response> reponseEntity;
 		UserAccountNotification uAccountNotification = restTemplate.getForObject(url, UserAccountNotification.class);
 		if (uAccountNotification.getSubscriptType() != Notice.Type.USER_ASSIGNMENT) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = uAccountservice.assignUser(uAccountNotification);
@@ -46,7 +46,7 @@ public class UserAccountController {
 		ResponseEntity<Response> reponseEntity;
 		UserAccountNotification uAccountNotification = restTemplate.getForObject(url, UserAccountNotification.class);
 		if (uAccountNotification.getSubscriptType() != Notice.Type.USER_UNASSIGNMENT) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = uAccountservice.unAssignUser(uAccountNotification);
@@ -64,7 +64,7 @@ public class UserAccountController {
 		ResponseEntity<Response> reponseEntity;
 		UserAccountNotification uAccountNotification = restTemplate.getForObject(url, UserAccountNotification.class);
 		if (uAccountNotification.getSubscriptType() != Notice.Type.USER_UPDATED) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = uAccountservice.updateUser(uAccountNotification);

@@ -43,7 +43,7 @@ public class SubscriptionController {
 		ResponseEntity<Response> reponseEntity;
 		SubscriptionNotification subNotification = restTemplate.getForObject(url, SubscriptionNotification.class);
 		if (subNotification.getSubscriptType() != Notice.Type.SUBSCRIPTION_ORDER) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = subscriptionService.createSubscription(subNotification);
@@ -68,7 +68,7 @@ public class SubscriptionController {
 		ResponseEntity<Response> reponseEntity;
 		SubscriptionNotification subNotification = restTemplate.getForObject(url, SubscriptionNotification.class);
 		if (subNotification.getSubscriptType() != Notice.Type.SUBSCRIPTION_CHANGE) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = subscriptionService.changeSubscription(subNotification);
@@ -96,7 +96,7 @@ public class SubscriptionController {
 		ResponseEntity<Response> reponseEntity;
 		SubscriptionNotification subNotification = restTemplate.getForObject(url, SubscriptionNotification.class);
 		if (subNotification.getSubscriptType() != Notice.Type.SUBSCRIPTION_CANCEL) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = subscriptionService.cancelSubscription(subNotification);
@@ -122,7 +122,7 @@ public class SubscriptionController {
 		ResponseEntity<Response> reponseEntity;
 		SubscriptionNotification subNotification = restTemplate.getForObject(url, SubscriptionNotification.class);
 		if (subNotification.getSubscriptType() != Notice.Type.SUBSCRIPTION_NOTICE) {
-			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice", null, null), HttpStatus.BAD_REQUEST);
+			reponseEntity = new ResponseEntity<Response>(new ErrorResponse (ErrorCode.CONFIGURATION_ERROR, "Invalid Notice"), HttpStatus.BAD_REQUEST);
 		}
 		else {
 			 Response response = subscriptionService.notifySubscription(subNotification);

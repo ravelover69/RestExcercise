@@ -1,26 +1,56 @@
 package com.rest.excercise.service;
 
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
+import com.rest.excercise.domain.UserAccount;
 import com.rest.excercise.domain.UserAccountNotification;
+import com.rest.excercise.domain.entities.ErrorResponse;
+import com.rest.excercise.domain.entities.ErrorResponse.ErrorCode;
+import com.rest.excercise.domain.entities.Response;
 import com.rest.excercise.domain.entities.SuccessResponse;
 
 @Service
 public class UserAccountService {
 	
-	public SuccessResponse assignUser (UserAccountNotification uAccountNotification)
+	private static Map<String, UserAccount> userAccountMap;
+	
+	public Response assignUser (UserAccountNotification uAccountNotification)
 	{
-		return new SuccessResponse("123");
+		String uid = uAccountNotification.getUserAccount().getPayload().getUser().getUuid();
+		userAccountMap.put(uid,  uAccountNotification.getUserAccount());
+		
+		return new SuccessResponse("User Assigned subscription");
 	}
 	
-	public SuccessResponse unAssignUser (UserAccountNotification uAccountNotification)
+	public Response unAssignUser (UserAccountNotification uAccountNotification)
 	{
-		return new SuccessResponse("123");
+		String uid = uAccountNotification.getUserAccount().getPayload().getUser().getUuid();
+		UserAccount userAccount = userAccountMap.remove(uid);
+		Response response;
+		if (userAccount == null) {
+			response = new ErrorResponse(ErrorCode.USER_NOT_FOUND, "User Not found");
+		}
+		else {
+			response = new SuccessResponse(uid,  "User unassigned");
+		}
+		return response;
 	}
 	
-	public SuccessResponse updateUser (UserAccountNotification uAccountNotification)
+	public Response updateUser (UserAccountNotification uAccountNotification)
 	{
-		return new SuccessResponse("123");
+		String uid = uAccountNotification.getUserAccount().getPayload().getUser().getUuid();
+		UserAccount userAccount = userAccountMap.remove(uid);
+		Response response;
+		if (userAccount == null) {
+			response = new ErrorResponse(ErrorCode.USER_NOT_FOUND, "User Not found");
+		}
+		else {
+			userAccountMap.put(uid, uAccountNotification.getUserAccount());
+			response = new SuccessResponse(uid,  "User unassigned");
+		}
+		return response;
 	}
 
 }

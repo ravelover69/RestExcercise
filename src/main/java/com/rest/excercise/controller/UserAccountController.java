@@ -39,6 +39,9 @@ public class UserAccountController {
 	}
 	 
 	
+	/*
+	 * Unassign user
+	 */
 	@RequestMapping(value = "/unassign/", method = RequestMethod.POST)
 	public ResponseEntity<?> unAssignUserUrl (@RequestParam ("url") String url) {
 		System.out.println("In User UnAssignment");
@@ -56,7 +59,9 @@ public class UserAccountController {
 	}
 	
 	
-	
+	/*
+	 * Update User Account
+	 */
 	@RequestMapping(value = "/update/", method = RequestMethod.PUT)
 	public ResponseEntity<?> changeUserUrl (@RequestParam ("url") String url) {
 		System.out.println("In User Change");

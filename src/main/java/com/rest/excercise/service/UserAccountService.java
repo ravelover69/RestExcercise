@@ -1,9 +1,12 @@
 package com.rest.excercise.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.rest.excercise.domain.Subscription;
+import com.rest.excercise.domain.UserAccount;
 import com.rest.excercise.domain.UserAccountNotification;
 import com.rest.excercise.domain.entities.ErrorResponse;
 import com.rest.excercise.domain.entities.ErrorResponse.ErrorCode;
@@ -13,7 +16,15 @@ import com.rest.excercise.domain.entities.SuccessResponse;
 @Service
 public class UserAccountService {
 	
-	private static Map<String, UserAccount> userAccountMap;
+	private  Map<String, UserAccount> userAccountMap;
+	
+	public UserAccountService() {
+		this.userAccountMap = new HashMap<String, UserAccount>();
+	}
+
+	public  Map<String, UserAccount> getUserAccountMap() {
+		return userAccountMap;
+	}
 	
 	public Response assignUser (UserAccountNotification uAccountNotification)
 	{
@@ -51,5 +62,7 @@ public class UserAccountService {
 		}
 		return response;
 	}
+
+	
 
 }

@@ -1,46 +1,48 @@
 package com.rest.excercise.service;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-
 import com.rest.excercise.domain.Subscription;
 import com.rest.excercise.domain.SubscriptionNotification;
-import com.rest.excercise.domain.entities.Address;
-import com.rest.excercise.domain.entities.Company;
 import com.rest.excercise.domain.entities.ErrorResponse;
 import com.rest.excercise.domain.entities.ErrorResponse.ErrorCode;
-import com.rest.excercise.domain.entities.Item;
-import com.rest.excercise.domain.entities.MarketPlace;
-import com.rest.excercise.domain.entities.Notice;
-import com.rest.excercise.domain.entities.Order;
-import com.rest.excercise.domain.entities.Payload;
 import com.rest.excercise.domain.entities.Response;
 import com.rest.excercise.domain.entities.SuccessResponse;
-import com.rest.excercise.domain.entities.User;
+
 
 @Service
 public class SubscriptionService {
 
-	private static Map <String, Subscription> subscriptionMap;
+	private Map <String, Subscription> subscriptionMap;
 	private static AtomicLong accountId = new AtomicLong();
+	
+	public SubscriptionService () 
+	{
+		System.out.println ("In construsctor");
+		subscriptionMap = new HashMap<String, Subscription>();
+	}
+	
+	public Map<String, Subscription> getSubscriptionMap() {
+		return subscriptionMap;
+	}
 	
 	public static String createID()
 	{
 	    return String.valueOf(accountId.getAndIncrement());
 	}
 	
+	
 	public Response createSubscription (SubscriptionNotification newSubscription)
 	{
 		String acctId = createID ();
+		
 		subscriptionMap.put(acctId, newSubscription.getSubscription());
 		return new SuccessResponse(acctId);
-		
 	}
+	
 	
 	/*
 	 * Change Subscription
@@ -79,10 +81,19 @@ public class SubscriptionService {
 		
 	}
 	
+	
+	/*
+	 * Return all the subscription
+	 */
+	public Map <String, Subscription> getAllSubscription () {
+		return subscriptionMap;
+	}
+	 
 	public SuccessResponse notifySubscription (SubscriptionNotification newSubscription)
 	{
 		return new SuccessResponse("123");
 		
 	}
-		
+
+	
 }

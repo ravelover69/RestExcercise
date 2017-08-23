@@ -51,21 +51,6 @@ public class UseraccountServiceTests {
 	@Autowired
 	public UserAccountService uaccountService;
 	
-	@Test
-	public void testNotify() {
-		
-		RestTemplate restTemplate = new RestTemplate();	
-		MarketPlace marketPlace = new MarketPlace("https://www.acme.com", "APPDIRECT");
-	    Account account = new Account ("9d6fca98-aa94-462b-85fa-118804ad3fe3", "ACTIVE");
-	    Notice notice = new Notice (Notice.Type.UPCOMMING_INVOICE);
-	    Payload payLoad = new Payload(account, null, null, null, notice, null);			
-	    Subscription sub = new Subscription (marketPlace, null, payLoad);
-	    SubscriptionNotification subNotice = new SubscriptionNotification(Notice.Type.SUBSCRIPTION_NOTICE, sub);
-		Response resp = restTemplate.postForObject(REST_SERVICE_URI+"/notify/", subNotice, Response.class);
-		System.out.println(resp.isSuccess());
-	}
-	
-	
 	
 	@Test
 	public void testAssignUser() {
@@ -115,7 +100,7 @@ public class UseraccountServiceTests {
 		Payload payLoad = new Payload(account, null, null, null, null, conf);
 	    UserAccount userAccount = new UserAccount (marketPlace, creator, user, payLoad);
 		UserAccountNotification uAcctNotification = new UserAccountNotification (Notice.Type.USER_UPDATED, userAccount);
-		Response response = uaccountService.unAssignUser(uAcctNotification);
+		Response response = uaccountService.updateUser(uAcctNotification);
 		assertThat (response.isSuccess(), is(true));
 	}
 	

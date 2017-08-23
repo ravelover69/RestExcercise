@@ -7,14 +7,16 @@ public class Payload {
 	Company company;
 	Order order;
 	Notice notice;
+	Configuration conf;
 	
-	public Payload(Account account, User user, Company company, Order order, Notice notice) {
+	public Payload(Account account, User user, Company company, Order order, Notice notice, Configuration conf) {
 		super();
 		this.account = account;
 		this.user = user;
 		this.company = company;
 		this.order = order;
 		this.notice = notice;
+		this.conf = conf;
 	}
 
 	public Payload() {
@@ -53,5 +55,13 @@ public class Payload {
 
 	public void setNotice(Notice notice) {
 		this.notice = notice;
+	}
+
+	public Configuration getConf() {
+		return conf;
+	}
+
+	public void setConf(Configuration conf) {
+		this.conf = conf;
 	}
 }

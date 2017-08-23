@@ -21,8 +21,7 @@ public class SubscriptionService {
 	
 	public SubscriptionService () 
 	{
-		System.out.println ("In construsctor");
-		subscriptionMap = new HashMap<String, Subscription>();
+		subscriptionMap = new HashMap <String, Subscription>();
 	}
 	
 	public Map<String, Subscription> getSubscriptionMap() {
@@ -91,7 +90,7 @@ public class SubscriptionService {
 	 
 	public SuccessResponse notifySubscription (SubscriptionNotification newSubscription)
 	{
-		return new SuccessResponse("123");
+		return new SuccessResponse(newSubscription.getSubscription().getPayload().getAccount().getAccountIndetifier());
 		
 	}
 

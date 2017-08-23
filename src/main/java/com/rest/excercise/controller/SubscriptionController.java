@@ -26,7 +26,6 @@ import com.rest.excercise.service.SubscriptionService;
  * Controller for Subscription management.
  */
 
-
 @RestController
 @RequestMapping("/sub")
 public class SubscriptionController {
@@ -70,7 +69,6 @@ public class SubscriptionController {
 			 reponseEntity = new ResponseEntity<Response>(response, HttpStatus.OK);
 		}
 		return reponseEntity;
-
 	}
 	
 	

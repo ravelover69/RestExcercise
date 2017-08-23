@@ -26,6 +26,9 @@ public class UserAccountService {
 		return userAccountMap;
 	}
 	
+	/*
+	 * Assign user
+	 */
 	public Response assignUser (UserAccountNotification uAccountNotification)
 	{
 		String uid = uAccountNotification.getUserAccount().getPayload().getUser().getUuid();
@@ -34,6 +37,9 @@ public class UserAccountService {
 		return new SuccessResponse("User Assigned subscription");
 	}
 	
+	/*
+	 * UnAssign user
+	 */
 	public Response unAssignUser (UserAccountNotification uAccountNotification)
 	{
 		String uid = uAccountNotification.getUserAccount().getPayload().getUser().getUuid();
@@ -48,6 +54,10 @@ public class UserAccountService {
 		return response;
 	}
 	
+	
+	/*
+	 * Update User Account
+	 */
 	public Response updateUser (UserAccountNotification uAccountNotification)
 	{
 		String uid = uAccountNotification.getUserAccount().getPayload().getUser().getUuid();
@@ -58,7 +68,7 @@ public class UserAccountService {
 		}
 		else {
 			userAccountMap.put(uid, uAccountNotification.getUserAccount());
-			response = new SuccessResponse(uid,  "User unassigned");
+			response = new SuccessResponse(uid,  "User updated");
 		}
 		return response;
 	}
